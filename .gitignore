@@ -1,2 +1,2 @@
 # gcp-credentials.json git ignore
-4.multi_cloud_gcp/*.json
+*.json
