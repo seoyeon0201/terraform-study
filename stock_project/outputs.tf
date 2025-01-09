@@ -23,3 +23,21 @@ output "security_group_id" {
   description = "The security group ID"
   value       = aws_security_group.ec2_security_group.id
 }
+
+# RDS 인스턴스 ID 출력
+output "rds_instance_id" {
+  description = "The ID of the RDS instance"
+  value       = aws_db_instance.my_mysql_rds.id
+}
+
+# RDS Security Group ID 출력
+output "rds_security_group_id" {
+  description = "The ID of the RDS Security Group"
+  value       = aws_security_group.rds_security_group.id
+}
+
+# RDS DB Subnet Group 이름 출력
+output "db_subnet_group_name" {
+  description = "The name of the DB Subnet Group"
+  value       = aws_db_subnet_group.my_subnet_group.name
+}
