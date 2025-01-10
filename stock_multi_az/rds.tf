@@ -35,7 +35,7 @@ resource "aws_db_instance" "my_mysql_rds" {
   engine            = "mysql"
   engine_version    = "8.0"  
   instance_class    = "db.m6g.large"    # instance 스펙 변경
-  allocated_storage = 20  
+  allocated_storage = 20 
   storage_type      = "gp3"            # storage 스펙 변경
   db_name           = "stockdatabase"  # 기본 DB 이름
   username          = "admin" 
