@@ -1,2 +1,5 @@
 # gcp-credentials.json git ignore
 *.json
+
+# aws access,secret key
+stock_project_eks/variables.tf
