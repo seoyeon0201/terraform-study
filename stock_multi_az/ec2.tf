@@ -1,4 +1,4 @@
-# Security Group 생성
+# EC2 Security Group 생성
 resource "aws_security_group" "ec2_security_group" {
   name        = "ec2-security-group"
   description = "Allow SSH, HTTP, and HTTPS access from local IP"
@@ -39,7 +39,7 @@ resource "aws_security_group" "ec2_security_group" {
   }
 
   tags = {
-    Name = "EC2 Security Group"
+    Name = "HA-test-EC2-Security-Group"
   }
 }
 
@@ -54,7 +54,7 @@ resource "aws_instance" "my_ec2_instance" {
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
 
   tags = {
-    Name = "MyEC2Instance_for_RDS"
+    Name = "HA-test-EC2-Instance"
   }
 
   associate_public_ip_address = true
