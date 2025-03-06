@@ -58,3 +58,17 @@ module "irsa-ebs-csi" {
   role_policy_arns              = [data.aws_iam_policy.ebs_csi_policy.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
 }
+
+# Pod가 RDS의 접근 허용. 추후 k8s 내에서 sa 생성 후 연결
+module "irsa-rds" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+  version = "5.39.0"
+
+  create_role                   = true
+  role_name                     = "AmazonEKSTFRDSRole-${module.eks.cluster_name}"
+  provider_url                  = module.eks.oidc_provider
+  role_policy_arns              = [
+    "arn:aws:iam::aws:policy/AmazonRDSFullAccess"  # RDS 접근 권한을 부여
+  ]
+  oidc_fully_qualified_subjects = ["system:serviceaccount:default:rds-access-sa"]
+}
