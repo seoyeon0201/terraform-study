@@ -21,9 +21,10 @@ resource "kubernetes_secret" "app_secret" {
   data = {
     kis_api_appKey    = var.app_key
     kis_api_appSecret = var.app_secret
-    kis_api_baseUrl = "jdbc:mysql://${aws_db_instance.default.endpoint}:3306/stockdatabase?serverTimezone=Asia/Seoul"
-    db_username       = var.rds_username
-    db_password       = var.rds_password
+    kis_api_baseUrl   = var.base_url
+    spring_datasource_url = "jdbc:mysql://${aws_db_instance.default.endpoint}/sydb?serverTimezone=Asia/Seoul"
+    spring_datasource_username       = var.rds_username
+    spring_datasource_password       = var.rds_password
   }
 
   type = "Opaque"
