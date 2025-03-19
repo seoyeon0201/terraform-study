@@ -1,2 +1,3 @@
 # gcp-credentials.json git ignore
 *.json
+stock_project_deploy/variables.tf
